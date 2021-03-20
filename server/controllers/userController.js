@@ -21,7 +21,7 @@ const login = async (req, res) => {
             return res.status(404).json({ message: 'user not found' })
         let token = jwt.sign({ userName: req.body.userName, password: req.body.password }, process.env.SECRET)
         console.log(token)
-        res.status(200).json({ message: 'user created', token: token })
+        res.status(200).json({ message: 'user login', token: token })
     } catch (error) {
         res.status(500).json({ error: error })
     }

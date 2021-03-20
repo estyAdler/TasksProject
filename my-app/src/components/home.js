@@ -11,7 +11,6 @@ function mapStateToProps(state) {
 }
 export default connect(mapStateToProps)(function Home(props) {
     const { currentUser } = props; 
-    console.log(currentUser)
     return (
         <div>
             {JSON.stringify(currentUser) === JSON.stringify({})?<HomeRouter></HomeRouter>:<ProjectRouter></ProjectRouter>}

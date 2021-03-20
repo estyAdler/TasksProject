@@ -8,10 +8,7 @@ const initialState = {
 }
 const users = {
     setUser(state, action) {
-        debugger
-        console.log(action.payload)
         state.user = action.payload;
-        console.log('staaaaaaaaaaaaaaa',state.user)
     },
 }
 

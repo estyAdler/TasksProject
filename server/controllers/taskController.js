@@ -25,11 +25,9 @@ const addTask = async (req, res) => {
 const getUserTask = async (req, res) => {
     console.log(req.body, req.headers['authorization'])
     try {
-        const user = await User.findOne({ userName: req.headers['authorization'].userName, password: req.headers['authorization'].password })
+        const user = await User.findOne({ userName: req.headers['authorization'].userName, password: req.headers['authorization'].password }).populate('tasks')
         console.log("user", user)
-        const allTasks = await Task.find({ owner: user._id })
-        console.log("tasks", allTasks)
-        res.status(200).json({ tasks: allTasks })
+        res.status(200).json({ tasks: user.tasks })
     } catch (error) {
         res.status(500).json({ error: error })
     }
@@ -41,7 +39,7 @@ const updateTask = async (req, res) => {
         console.log(task)
         res.status(200).json({ message: 'task updated', task: task })
     } catch (error) {
-        res.status(500).json({ message: 'cannot create user', error: error })
+        res.status(500).json({ message: 'cannot update task', error: error })
     }
 }
 const updateStatusTask = async (req, res) => {
@@ -51,7 +49,7 @@ const updateStatusTask = async (req, res) => {
         console.log(task)
         res.status(200).json({ message: 'task updated', task: task })
     } catch (error) {
-        res.status(500).json({ message: 'cannot create user', error: error })
+        res.status(500).json({ message: 'cannot update task', error: error })
     }
 }
 const deleteTask = async (req, res) => {

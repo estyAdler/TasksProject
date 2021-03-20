@@ -76,6 +76,7 @@ export default withRouter(connect(mapStateToProps, mapDispathToProps)(function R
                 error["name"] = "Only letters";
             }
         }
+        //lastName
         if (!formfields["lastName"]) {
             formIsValid = false;
             error["lastName"] = "lastName is require";
@@ -86,6 +87,7 @@ export default withRouter(connect(mapStateToProps, mapDispathToProps)(function R
                 error["lastName"] = "Only letters";
             }
         }
+        //password
         if (!formfields["password"]) {
             formIsValid = false;
             error["password"] = "password is require";
